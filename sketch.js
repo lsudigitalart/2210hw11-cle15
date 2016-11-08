@@ -24,9 +24,9 @@ function draw(){
   // background(0);
 //  scale(2.0);
 
-// translate(width/2 - 120, height/2+320);
+ translate(width/2 - 20, height/2 + 20);
 // rotate(radians(270));
- scale(12);
+// scale(12);
 
   for (var i = 0; i <rowCount; i++){
     var district = trafficInc.getNum(i,"DISTRICT");
@@ -37,11 +37,11 @@ function draw(){
 }
 }
 
-function setXY(n, dist){
+function setXY(n, lat){
   // var x = map(lat, -90, 90, 0, width);
   // var y = map(long, -180, 180, 0, height);
   fill(10, 100);
-  ellipse(map(dist, 1, 4, 10, 50),height/2,10);
+  ellipse(map(lat, 1, 4, 10, 50),height/2,10);
 
 
 }
