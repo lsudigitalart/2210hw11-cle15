@@ -1,42 +1,37 @@
-var stats;
-var homeRuns = [];
+var cities;
+var rowCount;
 
 function preload(){
-  stats =loadTable("media/ortiz.csv")
+
+  cities =loadTable("media/cities.csv", "header");
 }
+
 function setup(){
 
-createCanvas(480, 120);
+createCanvas(1024, 764);
 
-var rowCount = stats.getRowCount;
+rowCount = cities.getRowCount();
+background(0);
+fill(255);
+noStroke();
 
-homeRuns = [];
-
-  for (var i = 0; i < rowCount; i++)
-  {
-    homeRuns[i] = stats.getNum(i,1);
-  }
+//background(map(rowCount, 0, 30000, 0, 200));
 
 }
-
 function draw(){
-background(204);
-stroke(153);
-line(20,100,20,20);
-line(20,100,460,100);
-  for (var i = 0; i <homeRuns.length; i++){
-    var x = map(i, 0, homeRuns.length -1, 20, 460);
-    line(x,20,x,100);
-  }
+translate(width/2 - 470, height/2- 320);
+rotate(radians(270));
+  for (var i = 0; i <rowCount; i++){
+    var latitude = cities.getNum(i,"lat");
+    var longitude = cities.getNum(i,"long");
+    //console.log(latitude, longitude);
+    setXY(latitude,longitude);
+}
+}
 
-  noFill();
-  stroke(0);
-  beginShape();
-  for (var i = 0; i <homeRuns.length; i++){
-    var x = map(i, 0, homeRuns.length -1, 20, 460);
-    var y = map(homeRuns[i], 0,60,100,20);
-    vertex(x,y);
-    //line(x,20,x,100);
-  }
-  endShape();
+function setXY(lat,long){
+  var x = map(lat, -90, 90, 0, height);
+  var y = map(long, -180, 180, 0, width);
+  ellipse(x,y,0.25);
+
 }
