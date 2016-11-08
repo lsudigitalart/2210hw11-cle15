@@ -24,7 +24,7 @@ function draw(){
   // background(0);
 //  scale(2.0);
 
- translate(width/2 - 20, height/2 + 20);
+ //translate(width/2 - 20, height/2 + 20);
 // rotate(radians(270));
 // scale(12);
 
